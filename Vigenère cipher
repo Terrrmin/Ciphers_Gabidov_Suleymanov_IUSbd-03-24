@@ -1,0 +1,42 @@
+#include <iostream> // Библиотека ввода и вывода
+#include <string>   // Библиотека для работы со строками
+
+using namespace std; // Пространство имен std
+
+int main()
+{
+    string text;       // Исходный текст
+    string key;        // Ключевое слово
+    string encrypted;  // Зашифрованный текст
+
+    // Ввод текста
+    cout << "Введите текст: ";
+    cin >> text;
+
+    // Ввод ключа
+    cout << "Введите ключ: ";
+    cin >> key;
+
+    // Проход по каждому символу текста
+    for(int i = 0; i < text.length(); i++)
+    {
+        // Получение номера буквы текста
+        int textValue = text[i] - 'A';
+
+        // Получение номера буквы ключа
+        int keyValue = key[i % key.length()] - 'A';
+
+        // Выполнение шифрования по формуле Виженера
+        char encryptedChar =
+            (textValue + keyValue) % 26 + 'A';
+
+        // Добавление символа к результату
+        encrypted += encryptedChar;
+    }
+
+    // Вывод результата
+    cout << "Зашифрованный текст: ";
+    cout << encrypted << endl;
+
+    return 0; // Завершение программы
+}
