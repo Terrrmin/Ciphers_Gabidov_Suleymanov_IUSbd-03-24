@@ -1,0 +1,64 @@
+#include <iostream> // Библиотека ввода и вывода
+#include <cmath>    // Библиотека математических функций
+
+using namespace std; // Пространство имен std
+
+int main()
+{
+    int p; // Первое простое число
+    int q; // Второе простое число
+    int e; // Открытый ключ
+    int d; // Закрытый ключ
+    int message; // Исходное сообщение
+
+    // Ввод простых чисел
+    cout << "Enter p: ";
+    cin >> p;
+
+    cout << "Enter q: ";
+    cin >> q;
+
+    // Вычисление n
+    int n = p * q;
+
+    // Вычисление функции Эйлера
+    int phi = (p - 1) * (q - 1);
+
+    // Вывод промежуточных результатов
+    cout << "n = " << n << endl;
+    cout << "phi = " << phi << endl;
+
+    // Ввод открытого ключа
+    cout << "Enter public key e: ";
+    cin >> e;
+
+    // Ввод закрытого ключа
+    cout << "Enter private key d: ";
+    cin >> d;
+
+    // Ввод сообщения
+    cout << "Enter text: ";
+    cin >> message;
+
+    // Выполнение шифрования
+    int encrypted = pow(message, e);
+
+    // Вычисление остатка от деления
+    encrypted = encrypted % n;
+
+    // Вывод зашифрованного сообщения
+    cout << "Encrypted text: ";
+    cout << encrypted << endl;
+
+    // Выполнение дешифрования
+    int decrypted = pow(encrypted, d);
+
+    // Вычисление остатка
+    decrypted = decrypted % n;
+
+    // Вывод расшифрованного сообщения
+    cout << "Decrypted text: ";
+    cout << decrypted << endl;
+
+    return 0; // Завершение программы
+}
